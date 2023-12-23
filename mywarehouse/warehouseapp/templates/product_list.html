@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Product List</title>
 </head>
 <body>
-$END$
+    <h1>Product List</h1>
+    <ul>
+    {% for product in products %}
+        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$</li>
+    {% endfor %}
+    </ul>
 </body>
 </html>

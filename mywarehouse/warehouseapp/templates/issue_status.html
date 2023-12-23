@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Status</title>
+</head>
+<body>
+    <h2>Status</h2>
+    {% if status.status == 'success' %}
+        <p>{{ status.message }}</p>
+        <p>Redirecting back to the main page in 5 seconds...</p>
+        <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
+    {% elif status.status == 'error' %}
+        <p>Error: {{ status.message }}</p>
+        <p>Redirecting back to the main page in 5 seconds...</p>
+        <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
+    {% endif %}
+</body>
+</html>

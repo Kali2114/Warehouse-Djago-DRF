@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Issue Product</title>
+</head>
+<body>
+    <h2>Issue Product</h2>
+    <h3>Inventory Status:</h3>
+    <ul>
+    {% for product in products %}
+        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$</li>
+    {% endfor %}
+    </ul>
+    =========================================
+    <form method="post" action="{% url 'issue_product' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Issue product</button>
+    </form>
+</body>
+</html>
