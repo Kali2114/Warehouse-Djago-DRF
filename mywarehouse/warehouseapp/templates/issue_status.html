@@ -1,17 +1,19 @@
+{% autoescape off %}
 <html>
 <head>
-    <title>Status</title>
+    <title>Issue Status</title>
 </head>
 <body>
-    <h2>Status</h2>
-    {% if status.status == 'success' %}
-        <p>{{ status.message }}</p>
-        <p>Redirecting back to the main page in 5 seconds...</p>
-        <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
-    {% elif status.status == 'error' %}
-        <p>Error: {{ status.message }}</p>
-        <p>Redirecting back to the main page in 5 seconds...</p>
-        <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
+    <h2>Issue Status</h2>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
+    <p>Redirecting back to the main page in 5 seconds...</p>
+    <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
 </body>
 </html>
+{% endautoescape %}

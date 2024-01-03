@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Product List</title>
 </head>
@@ -10,5 +11,7 @@
         <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$</li>
     {% endfor %}
     </ul>
+<a href="{% url 'index' %}">Back</a>
 </body>
 </html>
+

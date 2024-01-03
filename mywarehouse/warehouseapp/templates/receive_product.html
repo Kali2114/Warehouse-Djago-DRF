@@ -1,13 +1,11 @@
-<html>
-<head>
-    <title>Receive Product</title>
-</head>
-<body>
-    <h2>Receive Product</h2>
-    <form method="post" action="{% url 'receive_product' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Receive Product</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Receive Product</h2>
+  <form method="post" action="{% url 'receive_product' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Receive Product</button>
+      <a href="{% url 'index' %}">Back</a>
+  </form>
+{% endblock %}

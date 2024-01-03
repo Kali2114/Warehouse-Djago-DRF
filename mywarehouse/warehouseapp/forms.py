@@ -1,18 +1,19 @@
 from django import forms
+from .models import Product
 
-class ReceiveProductForm(forms.Form):
-    product_name = forms.CharField()
-    price = forms.FloatField()
-    quantity = forms.IntegerField()
+class BaseProductForms(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
 
-    def clean_product_name(self):
-        product_name = self.cleaned_data['product_name']
-        return product_name.capitalize()
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        return name.capitalize().strip()
 
-class IssueProductForm(forms.Form):
-    product_name = forms.CharField()
-    quantity = forms.IntegerField()
+class ReceiveProductForm(BaseProductForms):
+    class Meta(BaseProductForms.Meta):
+       pass
 
-    def clean_product_name(self):
-        product_name = self.cleaned_data['product_name']
-        return product_name.capitalize()
+class IssueProductForm(BaseProductForms):
+    class Meta(BaseProductForms.Meta):
+        fields = ['name', 'quantity']

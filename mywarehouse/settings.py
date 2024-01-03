@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-(x^^ziu&q@td-!lg(ix=ce(v4-0@0-%!u*i=3_)t8dlf(q96v^
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/warehouse/index/'
 
 # Application definition
 
