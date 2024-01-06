@@ -4,16 +4,10 @@
 </head>
 <body>
     <h2>Status</h2>
-    {% if messages %}
         {% for message in messages %}
             <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
         {% endfor %}
         <p>Redirecting back to the previous page in 5 seconds...</p>
         <meta http-equiv="refresh" content="5;url=/warehouse/receive_product">
-    {% else %}
-        <p>{{ added_quantity }} of {{ added_product_name }} added successfully!</p>
-        <p>Redirecting back to the previous page in 5 seconds...</p>
-        <meta http-equiv="refresh" content="5;url=/warehouse/receive_product">
-    {% endif %}
 </body>
 </html>

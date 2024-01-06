@@ -36,11 +36,8 @@ class ReceiveProductView(LoginRequiredMixin, CreateView):
 
         product.save()
 
-        return render(
-            self.request,
-            'receive_status.html',
-            {'added_quantity': quantity, 'added_product_name': product_name}
-        )
+        messages.success(self.request, f'{quantity} x {product_name} received.')
+        return render(self.request, 'receive_status.html')
 
 class IssueProductView(LoginRequiredMixin, View):
     template_name = 'issue_product.html'
@@ -56,17 +53,22 @@ class IssueProductView(LoginRequiredMixin, View):
         if form.is_valid():
             product_name = form.cleaned_data['name']
             quantity = form.cleaned_data['quantity']
-
-            try:
-                product = Product.objects.get(name=product_name)
-                product.quantity -= quantity
-                if product.quantity <= 0:
-                    product.delete()
-                else:
-                    product.save()
-                messages.success(request, f'Successfully issued {quantity} of {product_name}.')
-            except Product.DoesNotExist:
-                messages.error(request, f'Product {product_name} not found.')
+            if quantity > 0:
+                try:
+                    product = Product.objects.get(name=product_name)
+                    if product.quantity >= quantity:
+                        if product.quantity == quantity:
+                            product.delete()
+                        else:
+                            product.quantity -= quantity
+                            product.save()
+                        messages.success(request, f'{quantity} x {product_name} issued.')
+                    else:
+                        messages.error(request, f'Insufficient stock.')
+                except Product.DoesNotExist:
+                    messages.error(request, f'Product {product_name} not found.')
+            else:
+                messages.error(request, 'Error. Quantity should be a positive value.')
         return render(self.request, 'issue_status.html')
 
 @login_required

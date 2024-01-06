@@ -8,7 +8,7 @@ class BaseProductForms(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        return name.capitalize().strip()
+        return name.title().strip()
 
 class ReceiveProductForm(BaseProductForms):
     class Meta(BaseProductForms.Meta):
