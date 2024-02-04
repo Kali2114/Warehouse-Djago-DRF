@@ -1,1 +1,4 @@
 WarEnv/
+.idea/
+mywarehouse.__pycache__/
+*pyc

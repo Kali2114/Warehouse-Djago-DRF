@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from .models import Product, Company
 from .forms import ReceiveProductForm, IssueProductForm, CompanyForm, CompanyDeleteForm
@@ -27,9 +28,10 @@ class ReceiveProductView(LoginRequiredMixin, CreateView):
         price = form.cleaned_data['price']
         quantity = form.cleaned_data['quantity']
         company = form.cleaned_data['company']
+        region = form.cleaned_data['region']
         product, created = Product.objects.get_or_create(name=product_name,
                                                          defaults={'price': price, 'quantity': quantity,
-                                                                   'company': company})
+                                                                   'company': company, 'region': region})
         if price <= 0 or quantity <= 0:
             messages.error(self.request, 'Error. Price and quantity should be a positive value.')
             return render(self.request, 'receive_status.html')
@@ -74,6 +76,11 @@ class IssueProductView(LoginRequiredMixin, View):
                 messages.error(request, 'Error. Quantity should be a positive value.')
         return render(self.request, 'issue_status.html')
 
+class ProductDetails(LoginRequiredMixin, DetailView):
+    model = Product
+    template_name = 'product_detail.html'
+    context_object_name = 'product'
+
 class CompanyCreateView(LoginRequiredMixin, View):
     template_name = 'manage_companies.html'
 
@@ -100,8 +107,6 @@ class CompanyCreateView(LoginRequiredMixin, View):
 
         companies = Company.objects.all()
         return render(request, self.template_name, {'companies': companies, 'form': form, 'delete_form': delete_form})
-class ProductDetail(LoginRequiredMixin, View):
-    pass
 
 @login_required
 def display_product_list(request):

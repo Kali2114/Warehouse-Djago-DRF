@@ -1,10 +1,16 @@
 from django import forms
+from django.forms import CheckboxSelectMultiple
 from .models import Product, Company
+
+
 
 class BaseProductForms(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        widgets = {
+            'region': CheckboxSelectMultiple
+        }
 
     def clean_name(self):
         name = self.cleaned_data['name']

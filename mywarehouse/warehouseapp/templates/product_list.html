@@ -10,6 +10,10 @@
     {% for product in products %}
         <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$
             | {% if product.company %}{{ product.company.name }}{% else %}empty{% endif %}
+            | {% if product.region.all %}{% for region in product.region.all %}
+                {{ region.region }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}{% endif %}
+            <a href="{% url 'product_details' pk=product.pk %}">Details</a>
         </li>
     {% endfor %}
     </ul>

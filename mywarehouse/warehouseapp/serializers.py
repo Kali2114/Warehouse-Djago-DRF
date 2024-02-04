@@ -46,9 +46,3 @@ class IssueProductSerializer(serializers.ModelSerializer):
         if data['quantity'] <= 0:
             raise serializers.ValidationError("Quantity should be positive value.")
         return data
-
-#exclude
-#many to many, one to one
-#tests
-#select related
-#prefege related
