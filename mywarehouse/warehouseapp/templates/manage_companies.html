@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Manage Companies</title>
+</head>
+
+<body>
+    {% if companies %}
+        <h2>Existing Companies:</h2>
+        <ul>
+            {% for company in companies %}
+                <li>
+                    {{ company.name }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ delete_form.errors }}
+    <form method="post" action="{% url 'manage_companies' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="action" value="create_company">Create Company</button>
+        <button type="submit" name="action" value="delete_company">Delete Company</button>
+        <a href="{% url 'index' %}">Back</a>
+    </form>
+</body>
+
+</html>

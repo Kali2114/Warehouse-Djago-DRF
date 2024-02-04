@@ -8,7 +8,9 @@
     <h1>Product List</h1>
     <ul>
     {% for product in products %}
-        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$</li>
+        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$
+            | {% if product.company %}{{ product.company.name }}{% else %}empty{% endif %}
+        </li>
     {% endfor %}
     </ul>
 <a href="{% url 'index' %}">Back</a>

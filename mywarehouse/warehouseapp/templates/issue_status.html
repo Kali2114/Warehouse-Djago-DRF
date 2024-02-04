@@ -1,19 +1,13 @@
-{% autoescape off %}
 <html>
 <head>
     <title>Issue Status</title>
 </head>
 <body>
     <h2>Issue Status</h2>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+        {% endfor %}
     <p>Redirecting back to the main page in 5 seconds...</p>
     <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
 </body>
 </html>
-{% endautoescape %}

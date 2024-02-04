@@ -7,7 +7,8 @@
     <h3>Inventory Status:</h3>
     <ul>
     {% for product in products %}
-        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$</li>
+        <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$
+            | {{ product.company.name }}</li>
     {% endfor %}
     </ul>
     =========================================
