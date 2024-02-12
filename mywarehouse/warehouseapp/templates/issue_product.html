@@ -1,10 +1,8 @@
-<html>
-<head>
-    <title>Issue Product</title>
-</head>
-<body>
-    <h2>Issue Product</h2>
-    <h3>Inventory Status:</h3>
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %} Issue Product {% endblock %}
+{% block content %}
+    <h3 style="text-align: center;">Inventory Status:</h3>
     <ul>
     {% for product in products %}
         <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$
@@ -12,11 +10,17 @@
     {% endfor %}
     </ul>
     =========================================
-    <form method="post" action="{% url 'issue_product' %}">
+   <div class="card" style="width: 18rem; margin-left: 80px;">
+  <div class="card-body">
+    <h5 class="card-title">Issue Product</h5>
+    <p class="card-text">Enter product to issue</p>
+       <form method="post" action="{% url 'issue_product' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Issue product</button>
-        <a href="{% url 'index' %}">Back</a>
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Issue product</button>
+        <a href="{% url 'index' %}" title="Back"><i class="fa-solid fa-2x fa-rotate-left"></i></a>
     </form>
-</body>
-</html>
+  </div>
+</div>
+{% endblock %}
+

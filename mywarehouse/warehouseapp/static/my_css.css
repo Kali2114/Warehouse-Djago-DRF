@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 5px;
+    color: white;
+}
+
+.header .greeting h2 {
+    margin: 10;
+}
+
+.header .actions ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: r;
+}
+
+.header .actions ul li {
+    margin-right: 1px;
+}
+
+.header .actions a {
+    text-decoration: none;
+    color: white;
+}
+
+.background {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/wallpaper.jpg');
+    background-size: cover;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}

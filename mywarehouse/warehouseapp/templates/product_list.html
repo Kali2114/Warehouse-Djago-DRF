@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Product List</title>
-</head>
-<body>
-    <h1>Product List</h1>
+{% extends 'base.html' %}
+{% block title %} Product List {% endblock %}
+{% block content %}
+    <h1 style="text-align: center;">Product List:</h1>
     <ul>
     {% for product in products %}
         <li>{{ product.name }} - Quantity: {{ product.quantity }} | Price: {{ product.price }}$
@@ -13,11 +9,10 @@
             | {% if product.region.all %}{% for region in product.region.all %}
                 {{ region.region }}{% if not forloop.last %}, {% endif %}
             {% endfor %}{% endif %}
-            <a href="{% url 'product_details' pk=product.pk %}">Details</a>
+            <a href="{% url 'product_details' pk=product.pk %}" class="btn btn-secondary">Details</a>
         </li>
     {% endfor %}
     </ul>
-<a href="{% url 'index' %}">Back</a>
-</body>
-</html>
+<a href="{% url 'index' %}" title="Back"><i class="fa-solid fa-2x fa-rotate-left"></i></a>
+{% endblock %}
 

@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Management</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} My Warehouse APP {% endblock %}
+{% block content %}
+    <div class="header">
+        <div class="greeting">
+            <h2>Hello {{ user.username }}!</h2>
+        </div>
+        <div class="actions">
+            <ul>
+                <li><a href="{% url 'logout' %}" title="Logout"><i class="fa-solid fa-2x fa-arrow-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+    </div>
 
     <h1>Welcome to the Warehouse Management System</h1>
     <ul>
-        <li><a href="{% url 'receive_product' %}">Receive Product</a></li>
-        <li><a href="{% url 'issue_product' %}">Issue Product</a></li>
-        <li><a href="{% url 'display_product_list' %}">Display Product List</a></li>
-        <li><a href="{% url 'manage_companies' %}">Manage Companies</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'receive_product' %}" class="btn btn-dark" style="margin-top: 10px;">Receive Product</a></li>
+        <li><a href="{% url 'issue_product' %}" class="btn btn-dark" style="margin-top: 10px;">Issue Product</a></li>
+        <li><a href="{% url 'display_product_list' %}" class="btn btn-dark" style="margin-top: 10px;">Display Product List</a></li>
+        <li><a href="{% url 'manage_companies' %}" class="btn btn-dark" style="margin-top: 10px;">Manage Companies</a></li>
     </ul>
-
-</body>
-</html>
+{% endblock %}

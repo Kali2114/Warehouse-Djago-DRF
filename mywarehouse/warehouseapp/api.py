@@ -41,6 +41,7 @@ class IssueProductViewApi(generics.ListCreateAPIView):
 
         product_name = serializer.validated_data['name']
         quantity_to_issue = serializer.validated_data['quantity']
+
         product = get_object_or_404(Product, name=product_name)
 
         if product.quantity >= quantity_to_issue > 0:

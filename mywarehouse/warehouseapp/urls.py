@@ -13,6 +13,6 @@ urlpatterns = [
     path('product_details/<int:pk>/', views.ProductDetails.as_view(), name='product_details'),
     path('manage_companies/', views.CompanyCreateView.as_view(), name='manage_companies'),
     path('api/receive_product_api/', ReceiveProductViewApi.as_view(), name='receive-product-api'),
-    path('api/issue_product_api/<str:name>/', IssueProductViewApi.as_view(), name='issue-product-api'),
+    path('api/issue_product_api/', IssueProductViewApi.as_view(), name='issue-product-api'),
     path('api/product_detail_view/<int:pk>/', ProductDetailViewApi.as_view(), name='product-detail'),
 ]

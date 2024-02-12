@@ -31,7 +31,7 @@ class ReceiveProductSerializer(serializers.ModelSerializer):
         if data['price'] <= 0 or data['quantity'] <= 0:
             raise serializers.ValidationError("Price and quantity should be a positive values.")
         return data
-#
+
 class IssueProductSerializer(serializers.ModelSerializer):
     price = serializers.FloatField(read_only=True)
     company = serializers.CharField(read_only=True)

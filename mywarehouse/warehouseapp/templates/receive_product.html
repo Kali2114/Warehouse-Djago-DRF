@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
+{% block title %} Receive Product {% endblock %}
 {% block content %}
-  <h2>Receive Product</h2>
+<div class="card" style="width: 18rem; margin-top: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">Receive Product</h5>
+    <p class="card-text">Enter product to receive</p>
   <form method="post" action="{% url 'receive_product' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Receive Product</button>
-      <a href="{% url 'index' %}">Back</a>
+    {{ form|bootstrap }}
+    <button type="submit" class="btn btn-primary">Receive Product</button>
+      <a href="{% url 'index' %}" title="Back"><i class="fa-solid fa-2x fa-rotate-left"></i></a>
   </form>
 {% endblock %}
+  </div>
+</div>

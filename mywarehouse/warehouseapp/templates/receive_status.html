@@ -1,13 +1,10 @@
-<html>
-<head>
-    <title>Status</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Receive OK {% endblock %}
+{% block content %}
     <h2>Status</h2>
         {% for message in messages %}
             <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
         {% endfor %}
         <p>Redirecting back to the previous page in 5 seconds...</p>
         <meta http-equiv="refresh" content="5;url=/warehouse/receive_product">
-</body>
-</html>
+{% endblock %}

@@ -1,13 +1,11 @@
-<html>
-<head>
-    <title>Issue Status</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Issue OK {% endblock %}
+{% block content %}
     <h2>Issue Status</h2>
         {% for message in messages %}
             <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
         {% endfor %}
     <p>Redirecting back to the main page in 5 seconds...</p>
     <meta http-equiv="refresh" content="5;url=/warehouse/issue_product">
-</body>
-</html>
+{% endblock %}
+

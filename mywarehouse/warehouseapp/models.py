@@ -14,7 +14,7 @@ class Region(models.Model):
         ('Asia', 'Asia'),
         ('America', 'America'),
         ('Australia', 'Australia'),
-        ('Africe', 'Africa'),
+        ('Africa', 'Africa'),
         ('South America', 'South America')
     ]
     region = models.CharField(max_length=20, choices=REGION_CHOICES, unique=True)
@@ -26,5 +26,5 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.FloatField()
     quantity = models.IntegerField()
-    company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, null=True, blank=True, on_delete=models.CASCADE)
     region = models.ManyToManyField(Region, blank=True)
